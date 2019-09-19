@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email App</title>
+    <link href= "/public/stylesheets/style.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="div-compose">
+            <a href="/email/compose"><div class="compose-btn"><i class="fa fa-pencil"></i>Compose</div></a>
+        </div>
+        <div class="content">
+            <div class="search-bar">
+                <input type="text" id="searchBarName" placeholder="Search by sender"> <a href="/email/sender?sender=test"><button  class="btn btn-search">Search</button></a>
+            </div>
+
+            <% if (emails.length !== 0) {%>
+                <% for(let email of emails) {%>
+                    <% if (!email.archived) {%>
+                        <div class="email-row">
+                                <a href="/email/<%=email.id%>">
+                                    <div class="sender"><i class="fa fa-address-book"></i> <%= email.sender %></div>
+                                    <div class="title"> <i class="fa fa-envelope"></i> <%= email.title %></div>
+                                </a>
+                                <form action="/email/<%=email.id%>/delete" method="POST">
+                                    <button type="submit" class="btn btn-delete"> <i class="fa fa-trash"></i> Delete</button>
+                                </form>
+                                <form action="/email/<%=email.id%>/archive" method="POST">
+                                    <button type="submit" class="btn btn-archive"> <i class="fa fa-folder-o"></i> Archive</button>
+                                </form>
+                        </div>
+                        <% } else {} %>
+
+                    <% }%>
+            <% } else {%>
+                <h1>No Emails :( </h1>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email App</title>
+    <link href= "/public/stylesheets/style.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+From: <input type="text" name="sender" value="<%=email.sender%>" readonly><br>
+Subject: <input type="text" name="title" value="<%=email.title%>" readonly><br>
+
+Message: 
+<textarea rows="10" cols="100" readonly>
+<%=email.emailBody%>
+</textarea>
+
+</body>
+
+</html>
